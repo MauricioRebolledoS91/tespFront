@@ -2,14 +2,14 @@
   <h1 class="header">
     Edit Contact
   </h1>
-  <form>
+  <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
     <section>
       <nav>Name/Info</nav>
       <div>
-        <input placeholder="First Name" />
-        <input placeholder="Last Name" />
-        <input placeholder="Date of Birth" />
-        <input placeholder="Favorites Ranking" />
+        <input formControlName="firstName" placeholder="First Name" />
+        <input formControlName="lastName" placeholder="Last Name" />
+        <input formControlName="dateOfBirth" placeholder="Date of Birth" />
+        <input formControlName="favoritesRanking" placeholder="Favorites Ranking" />
       </div>
     </section>
     <section>
@@ -44,10 +44,12 @@
           </select>
         </div>
       </div>
+      <div class="buttons">
+        <button class="secondary">Cancel</button>
+        <!-- es importante que el botón con type="subtmit" esté dentro de la tag form
+        de lo contratrio, no sabrá qué formulario enviar -->
+        <button type="submit" class="primary" >Save</button>
+      </div>
     </section>
   </form>
-  <div class="buttons">
-    <button class="secondary">Cancel</button>
-    <button class="primary" (click)="saveContact()">Save</button>
-  </div>
 </div>
