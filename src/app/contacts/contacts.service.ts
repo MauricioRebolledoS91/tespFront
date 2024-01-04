@@ -12,6 +12,10 @@ export class ContactsService {
 
   getContact(id: string): Observable<Contact | undefined> {
     return this.http.get<Contact>(`api/contacts/${id}`)
+    // nuestra api devolverá las fechas en un formato como este '1994-05-05T06:00:00.000Z'
+    //y la expresión pipe que hay en la siguiente línea, recortará T06:00:00.000Z
+    //para darnos una fecha con un formato como este '1994-05-05'
+      // .pipe(map(c => { c.dateOfBirth = c.dateOfBirth.split('T')[0]; return c}));
       .pipe(map(c => {
         const dob = c.dateOfBirth ? new Date(c.dateOfBirth) : null;
         return { ...c, dateOfBirth: dob }
