@@ -6,6 +6,7 @@
     <section>
       <nav>Name/Info</nav>
       <div>
+        <con-profile-icon-selector formControlName="icon"></con-profile-icon-selector>
         <input formControlName="firstName" [class.error]="firstName.invalid && firstName.touched" 
         placeholder="First Name" />
         <!-- cualquier formcontrol que actualmente tenga un error de validación, también tendrá
@@ -15,7 +16,6 @@
         <em *ngIf="firstName.errors?.['minlength'] && firstName.touched">First name must be at least 3 characters</em>
         <input formControlName="lastName" placeholder="Last Name" />
         <input formControlName="dateOfBirth" type="date" 
-          [value]="contactForm.controls.dateOfBirth.value | date:'yyyy-MM-dd'"
           placeholder="Date of Birth" />
         <div>
           <span>Favorites Ranking:</span>
