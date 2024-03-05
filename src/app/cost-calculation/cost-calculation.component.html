@@ -1,0 +1,59 @@
+<div class="content">
+  <h1 class="header">
+    Car Auction
+  </h1>
+  <form [formGroup]="carForm" (ngSubmit)="calculate()">
+    <section>
+      <nav>Price and Type</nav>
+      <div  class="flex-column">
+        <div class="flex-group">
+          <input formControlName="vehiclePrice" type="number" placeholder="Vehicle Price" [class.error]="carForm.controls.vehiclePrice.invalid && carForm.controls.vehiclePrice.touched" />
+        </div>
+        <div class="radio">
+          <span *ngFor="let carTypeValue of carTypeValues">
+            <input type="radio" formControlName="vehicleType" [value]="carTypeValue.value"> {{carTypeValue.title}}
+          </span>
+
+        </div>
+      </div>
+    </section>
+    <div class="buttons">
+      <button (click)="clear()" class="secondary">Clear</button>
+      <button type="submit" class="primary" [disabled]="carForm.invalid" >Calculate</button>
+    </div>
+  </form>
+    <section>
+      <nav>Fees</nav>
+       <div>                                          
+        
+          <table>
+            <thead>
+              <th>Basic</th>
+              <th>Special</th>
+              <th>Association</th>
+              <th>Storage</th>
+              <th>Total</th>
+            </thead>
+            <tbody>
+
+              <ng-container>
+                <tr>
+                  <td>{{calculatedCost?.basicUserFee | currency:'USD':'symbol':'1.2-2'}}</td>
+                  <td>{{calculatedCost?.specialUserFee | currency:'USD':'symbol':'1.2-2'}}</td>
+                  <td>
+                    {{calculatedCost?.associationCosts | currency:'USD':'symbol':'1.2-2'}}
+                  </td>
+                  <td>
+                    {{calculatedCost?.storageCosts | currency:'USD':'symbol':'1.2-2'}}
+                  </td>
+                  <td>
+                    {{calculatedCost?.totalCosts | currency:'USD':'symbol':'1.2-2'}}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+    </section>  
+    
+</div>

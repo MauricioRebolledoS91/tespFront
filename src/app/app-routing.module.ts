@@ -1,25 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditContactComponent } from './edit-contact/edit-contact.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
+import { CostCalculationComponent } from './cost-calculation/cost-calculation-contact.component';
 
 const routes: Routes = [
+
   {
-    path: 'contacts',
-    component: ContactListComponent,
-    title: 'Contacts'
+    path: 'carauction/calculator',
+    component: CostCalculationComponent,
+    title: 'Car Auction'
   },
-  {
-    path: 'contacts/edit/:id',
-    component: EditContactComponent,
-    title: 'Contacts - Edit'
-  },
-  {
-    path: 'contacts/edit',
-    component: EditContactComponent,
-    title: 'Contacts - Edit'
-  },
-  { path: '', redirectTo: '/contacts', pathMatch: 'full' },
+  { path: '', redirectTo: 'carauction/calculator', pathMatch: 'full' },
 ];
 
 @NgModule({
